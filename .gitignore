@@ -3,3 +3,9 @@
 
 #virtualenv
 envAmin/
+
+#database
+db.sqlite3
+
+#migration
+blog/migrations/
