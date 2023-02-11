@@ -1,0 +1,5 @@
+#win stuff
+.idea/
+
+#virtualenv
+envAmin/
