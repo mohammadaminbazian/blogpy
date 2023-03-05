@@ -3,5 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.IndexPage.as_view(), name="index"),
-    path('tt', views.IndexPage.as_view(), name="index1"),
+    path('contact/', views.ContactPage.as_view(), name="contact"),
+
+    path('tt/', views.IndexPageTT.as_view(), name="index1"),
+
 ]
