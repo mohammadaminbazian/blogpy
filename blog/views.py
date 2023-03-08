@@ -129,10 +129,35 @@ class SubmitArticleAPIview(APIView):
         except:
             return Response({'status':'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class UpdateCoverArticleAPIview(APIView):
+    def post(self, request, format=None):
+        try:
+            serializer = serializers.UpdateCoverArticleSerializer(data=request.data) # data=request.data
+            if serializer.is_valid() :
+                article_id = serializer.data.get('article_id')
+                cover = request.FILES['cover']
+            else:
+                return Response({'status':'bad request'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+            Article.objects.filter(id=article_id).update(cover=cover)
+
+            return Response({'status': 'OK Update'}, status=status.HTTP_200_OK)
+        except:
+            return Response({'status': ' Internal Eerver Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-
-
+class DeleteArticleAPIview(APIView):
+    def post(self, request, format=None ):
+        try:
+            serializer = serializers.DeleteArtilceSerializer(data=request.data)
+            if serializer.is_valid():
+                article_id = serializer.data.get('article_id')
+            else:
+                return Response({'status': 'Bad Request'}, status=status.HTTP_400_BAD_REQUEST)
+            Article.objects.filter(id=article_id).delete()
+            return Response({'status': 'Ok delete'}, status=status.HTTP_200_OK)
+        except:
+            return Response({'status':'Internal Server Error'},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 
