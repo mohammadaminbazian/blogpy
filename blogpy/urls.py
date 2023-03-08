@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # http://127.0.0.1:8000/admin
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('blog.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+
 ]
 
 if settings.DEBUG:
