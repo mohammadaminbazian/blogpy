@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3r6j980b2b)9xdb9ttprd-6_i@0=z=l6=gty-4g0xuus=1e+y&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
         'NAME':  'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'HOST': 'blogpy_postgresql', #'localhost',
         'PORT': '5432',
     }
 }
@@ -124,11 +124,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 # static Files
-STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles') #os.path.dirname(os.path.abspath(__file__))
+#STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles') #os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT =os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR, 'static'),
+#)
 
 # CKeditor base path
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
